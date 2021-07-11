@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-outline-blue {
+  @apply text-blue-600 hover:text-white hover:bg-blue-500 border-blue-600;
+}
+.btn-contained-blue {
+  @apply text-white hover:bg-blue-300 bg-blue-600 border-transparent;
+}
