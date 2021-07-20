@@ -1,10 +1,8 @@
 module.exports = {
   root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
+  parser: "@typescript-eslint/parser",
+  parserOptions: {project: ["tsconfig.json"], },
+  env: {browser: true, es2021: true,node: true,},
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -13,28 +11,15 @@ module.exports = {
     "next/core-web-vitals",
     "prettier",
   ],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    ecmaVersion: 2021,
-    sourceType: "module",
-    ecmaFeatures: {
-      jsx: true,
-    },
-    project: ["tsconfig.json"],
-  },
-  settings: { react: { version: "detect" } },
   plugins: [
-    "@typescript-eslint",
+    // "@typescript-eslint",
     "simple-import-sort",
-    //  "tailwindcss"
+     "tailwindcss"
   ],
   rules: {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "no-restricted-imports": [
-      "error",
-      { paths: [{ name: "react", importNames: ["default"] }] },
-    ],
+    "no-restricted-imports": ["error",{ paths: [{ name: "react", importNames: ["default"] }] },],
     "prefer-arrow-callback": "error",
     "prefer-const": "error",
     "func-style": ["error", "expression"],
@@ -61,23 +46,19 @@ module.exports = {
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/consistent-type-imports": [
-      "warn",
-      { prefer: "type-imports" },
-    ],
+    "@typescript-eslint/consistent-type-imports": ["warn",{ prefer: "type-imports" },],
     "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     "@typescript-eslint/naming-convention": [
       "error",
+      // { selector: "variable",modifiers: "const",format: ["PascalCase", "camelCase"] },
       { selector: ["typeAlias", "typeParameter"], format: ["PascalCase"] },
-      {
-        selector: ["property", "parameterProperty", "method"],
-        format: ["camelCase"],
-      },
-      {
+      { selector: ["property", "parameterProperty", "method"],format: ["camelCase"] },
+      { 
         selector: "variable",
         types: ["boolean"],
         format: ["PascalCase"],
         prefix: ["is", "has", "should"],
+        filter: { regex: "^_", match: false }, 
       },
     ],
     "jsx-a11y/anchor-is-valid": [
@@ -91,7 +72,7 @@ module.exports = {
     "jsx-a11y/alt-text": "OFF",
     // "tailwindcss/classnames-order": "warn",
     // "tailwindcss/no-custom-classname": "warn",
-    // "tailwindcss/no-contradicting-classname": "error",
+    "tailwindcss/no-contradicting-classname": "error",
   },
   overrides: [
     {

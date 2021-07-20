@@ -1,4 +1,4 @@
-import { ReadFolderType, TagType } from "src/types";
+import type { ReadFolderType, TagType } from "src/types";
 
 export const TAG_DATA: TagType[] = [
   {

@@ -139,3 +139,20 @@ const Home: VFC = () => {
 export default Home;
 
 ```
+
+# git commit 時のチェック
+
+## husly,lint-staged インストール
+
+```
+npx mrm@2 lint-staged
+```
+
+## package.json 編集
+
+```
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*": "prettier --write"
+  }
+```
