@@ -5,6 +5,13 @@ module.exports = {
     es2021: true,
     node: true,
   },
+  settings: {
+    "import/resolver": {
+      node: {
+        paths: ["."],
+      },
+    },
+  },
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -23,17 +30,41 @@ module.exports = {
     project: ["tsconfig.json"],
   },
   settings: { react: { version: "detect" } },
-  plugins: [
-    "@typescript-eslint",
-    "simple-import-sort",
-    //  "tailwindcss"
-  ],
+  plugins: ["@typescript-eslint", "simple-import-sort", "tailwindcss"],
   rules: {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "no-restricted-imports": [
       "error",
       { paths: [{ name: "react", importNames: ["default"] }] },
+    ],
+    "no-restricted-syntax": [
+      "error",
+      { selector: "TSEnumDeclaration", message: "Don't declare enums" },
+      {
+        selector: "TSInterfaceDeclaration",
+        message: "Don't declare Interface",
+      },
+      {
+        selector: "ForInStatement",
+        message:
+          "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.",
+      },
+      {
+        selector: "ForOfStatement",
+        message:
+          "iterators/generators require regenerator-runtime, which is too heavyweight for this guide to allow them. Separately, loops should be avoided in favor of array iterations.",
+      },
+      {
+        selector: "LabeledStatement",
+        message:
+          "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
+      },
+      {
+        selector: "WithStatement",
+        message:
+          "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
+      },
     ],
     "prefer-arrow-callback": "error",
     "prefer-const": "error",
@@ -89,9 +120,9 @@ module.exports = {
       },
     ],
     "jsx-a11y/alt-text": "OFF",
-    // "tailwindcss/classnames-order": "warn",
+    "tailwindcss/classnames-order": "warn",
     // "tailwindcss/no-custom-classname": "warn",
-    // "tailwindcss/no-contradicting-classname": "error",
+    "tailwindcss/no-contradicting-classname": "error",
   },
   overrides: [
     {
