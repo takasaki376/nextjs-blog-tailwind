@@ -37,6 +37,7 @@ module.exports = {
     "react/destructuring-assignment": ["error", "never"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-pascal-case":["error" , {allowNamespace : true}],
     "import/newline-after-import": "error",
     "import/no-default-export": "error",
     "simple-import-sort/imports": "error",
