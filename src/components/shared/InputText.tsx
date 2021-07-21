@@ -67,7 +67,7 @@ export const InputText: VFC<Props> = (props) => {
           type="text"
           autoFocus
           value={props.value}
-          className="m-0 p-0 w-full border-white outline-none"
+          className="p-0 m-0 w-full border-white outline-none"
           placeholder={props.placeholder}
           onChange={props.onChange}
           onFocus={handleOnFocus}

@@ -39,7 +39,7 @@ export const Accordion: VFC<Props> = (props) => {
         ])}
       >
         <button
-          className="flex flex-1 items-center m-0 p-0 whitespace-nowrap text-sm border-0 focus:outline-none"
+          className="flex flex-1 items-center p-0 m-0 text-sm whitespace-nowrap border-0 focus:outline-none"
           onClick={props.onClick}
         >
           {props.label}
