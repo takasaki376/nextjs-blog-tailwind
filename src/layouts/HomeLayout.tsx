@@ -1,7 +1,6 @@
 import Head from "next/head";
 import type { ReactNode, VFC } from "react";
 import { HomeHeader } from "src/components/HomeParts/HomeHeader";
-import { HomeLeft } from "src/components/HomeParts/HomeLeft";
 import { HomeRight } from "src/components/HomeParts/HomeRight";
 
 type Props = {
@@ -11,7 +10,7 @@ type Props = {
 
 export const HomeLayout: VFC<Props> = (props) => {
   return (
-    <div className="w-full h-screen">
+    <div className="flex w-full h-screen">
       <Head>
         <title>{props.title}</title>
       </Head>
@@ -20,10 +19,7 @@ export const HomeLayout: VFC<Props> = (props) => {
           <HomeHeader />
         </header>
         <main className="flex flex-row w-full h-screen">
-          <div className="flex-1 max-w-52 h-full overscroll-none">
-            <HomeLeft />
-          </div>
-          <div className="flex-auto">{props.children}</div>
+          <div className="flex-auto overflow-y-auto">{props.children}</div>
           <div className="flex-1 max-w-52 h-full overscroll-none">
             <HomeRight />
           </div>
