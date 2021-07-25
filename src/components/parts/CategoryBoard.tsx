@@ -1,4 +1,5 @@
 import type { Dispatch, ReactNode, SetStateAction, VFC } from "react";
+import { useCallback } from "react";
 import { useState } from "react";
 import { Accordion } from "src/components/shared/Accordion";
 import { FOLDER1_DATA, FOLDER2_DATA } from "src/data";
@@ -11,10 +12,16 @@ type AccordionType = {
   children?: ReactNode;
   childFolder: boolean;
 };
+
 const RenderAccordion: VFC<AccordionType> = (props) => {
   const handleSetFolder = () => {
     props.setSelFolder(props.id);
   };
+
+  // const handleSetFolder = useCallback(() => {
+  //   props.setSelFolder(props.id);
+  // }, [props]);
+
   return (
     <Accordion
       id={props.id}
@@ -36,33 +43,36 @@ export const CategoryBoard: VFC = () => {
   );
 
   // フォルダ２の表示
-  const forder2Render = (propsIndex: number) => {
-    const result = folder2List
-      .filter((forder2) => {
-        return forder2.index1 === propsIndex;
-      })
-      .sort((a, b) => {
-        if (a.index < b.index) return -1;
-        if (a.index > b.index) return 1;
-        return 0;
-      })
-      .map((forder2) => {
-        return (
-          <RenderAccordion
-            id={`2-${forder2.index1}-${forder2.index}`}
-            key={`${forder2.id}`}
-            selected={selFolder}
-            name={forder2.folderName}
-            setSelFolder={setSelFolder}
-            childFolder={false}
-          />
-        );
-      });
-    return result;
-  };
+  const forder2Render = useCallback(
+    (propsIndex: number) => {
+      const result = folder2List
+        .filter((forder2) => {
+          return forder2.index1 === propsIndex;
+        })
+        .sort((a, b) => {
+          if (a.index < b.index) return -1;
+          if (a.index > b.index) return 1;
+          return 0;
+        })
+        .map((forder2) => {
+          return (
+            <RenderAccordion
+              id={`2-${forder2.index1}-${forder2.index}`}
+              key={`${forder2.id}`}
+              selected={selFolder}
+              name={forder2.folderName}
+              setSelFolder={setSelFolder}
+              childFolder={false}
+            />
+          );
+        });
+      return result;
+    },
+    [folder2List, selFolder]
+  );
 
   // フォルダ１の表示
-  const forder1Render = () => {
+  const forder1Render = useCallback(() => {
     const result = folder1List
       .sort((a, b) => {
         if (a.index < b.index) return -1;
@@ -90,7 +100,7 @@ export const CategoryBoard: VFC = () => {
         );
       });
     return result;
-  };
+  }, [folder1List, folder2List, selFolder, forder2Render]);
 
   return (
     <div className="flex flex-col h-1/3">

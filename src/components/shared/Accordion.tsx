@@ -1,7 +1,7 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/outline";
 import cc from "classcat";
 import type { DOMAttributes, ReactNode, VFC } from "react";
-import { useState } from "react";
+import { memo, useState } from "react";
 
 import { Divider } from "./Divider";
 
@@ -16,7 +16,8 @@ type Props = {
   onClick?: DOMAttributes<HTMLButtonElement>["onClick"];
 };
 
-export const Accordion: VFC<Props> = (props) => {
+/* eslint-disable react/display-name */
+export const Accordion: VFC<Props> = memo((props) => {
   const [isOpen, setIsOpen] = useState(props.defaultOpen);
 
   const handleOpenClick: DOMAttributes<SVGSVGElement>["onClick"] = () => {
@@ -71,7 +72,7 @@ export const Accordion: VFC<Props> = (props) => {
       <Divider />
     </div>
   );
-};
+});
 // Propsのデフォルト値
 Accordion.defaultProps = {
   defaultOpen: false,

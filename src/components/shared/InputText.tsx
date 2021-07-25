@@ -1,5 +1,6 @@
 import cc from "classcat";
 import type { DOMAttributes, VFC } from "react";
+import { memo } from "react";
 import { useState } from "react";
 import { IconButton } from "src/components/shared/IconButton";
 
@@ -13,7 +14,8 @@ type Props = {
   required?: boolean;
 };
 
-export const InputText: VFC<Props> = (props) => {
+/* eslint-disable react/display-name */
+export const InputText: VFC<Props> = memo((props) => {
   const [isFocus, setIsFocus] = useState(false);
 
   const handleOnClickSearch: DOMAttributes<HTMLButtonElement>["onClick"] =
@@ -76,4 +78,4 @@ export const InputText: VFC<Props> = (props) => {
       </div>
     </div>
   );
-};
+});

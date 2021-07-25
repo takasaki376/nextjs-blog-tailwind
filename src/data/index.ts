@@ -1,4 +1,4 @@
-import type { ReadFolderType, TagType } from "src/types";
+import type { BlogType, ReadFolderType, TagType } from "src/types";
 
 export const TAG_DATA: TagType[] = [
   {
@@ -120,5 +120,27 @@ export const FOLDER2_DATA: ReadFolderType[] = [
     level: 2,
     index1: 3,
     index2: 3,
+  },
+];
+
+export const BLOG_DATA: BlogType[] = [
+  {
+    id: 1,
+    title: "React使ってみた",
+    content: `Reactの3つの特徴
+1.Declarative : 宣言的な
+2.Component Based : コンポーネントベースである
+3.Learn Once,Write AnyWhere : 一度覚えてしまえばどこにだって書ける`,
+    createdAt: "2021/1/1",
+  },
+  {
+    id: 2,
+    title: "Next.jsを使うべき5つの理由",
+    content: `1.SSR/SSG
+2.ファイルベースルーティング
+3.開発サーバの部分的な高速リロード(Fast Refresh)
+4.画像最適化
+5.ゼロコンフィグ`,
+    createdAt: "2021/1/1",
   },
 ];

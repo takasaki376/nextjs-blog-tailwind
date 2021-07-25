@@ -1,6 +1,7 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import cc from "classcat";
 import type { DOMAttributes, ReactNode, VFC } from "react";
+import { memo } from "react";
 import { useState } from "react";
 
 type Props = {
@@ -15,7 +16,8 @@ type Props = {
   onClick?: DOMAttributes<HTMLButtonElement>["onClick"];
 };
 
-export const TreeView: VFC<Props> = (props) => {
+/* eslint-disable react/display-name */
+export const TreeView: VFC<Props> = memo((props) => {
   const [isOpen, setIsOpen] = useState(props.defaultOpen);
   const classes = cc(["flex flex-col my-1", props.className]);
 
@@ -69,7 +71,7 @@ export const TreeView: VFC<Props> = (props) => {
       {isOpen && <div className="ml-4">{props.children}</div>}
     </div>
   );
-};
+});
 // Propsのデフォルト値
 TreeView.defaultProps = {
   defaultOpen: false,

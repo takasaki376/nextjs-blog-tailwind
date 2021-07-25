@@ -1,5 +1,6 @@
 import cc from "classcat";
 import type { DOMAttributes, ReactNode, VFC } from "react";
+import { memo } from "react";
 import { useState } from "react";
 
 type Props = {
@@ -8,7 +9,8 @@ type Props = {
   onClick?: DOMAttributes<HTMLButtonElement>["onClick"];
 };
 
-export const TagButton: VFC<Props> = (props) => {
+/* eslint-disable react/display-name */
+export const TagButton: VFC<Props> = memo((props) => {
   const [isSelect, setIsSelect] = useState(false);
 
   const handleClick: DOMAttributes<HTMLButtonElement>["onClick"] = (e) => {
@@ -33,4 +35,4 @@ export const TagButton: VFC<Props> = (props) => {
       {props.children}
     </button>
   );
-};
+});
