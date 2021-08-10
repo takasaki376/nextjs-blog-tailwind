@@ -123,7 +123,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["src/pages/**/*.tsx", "src/pages/**/**/*.tsx"],
+      files: ["src/pages/**/*.tsx", "src/pages/**/**/*.tsx","src/pages/**/**/*.ts"],
       rules: { "import/no-default-export": "off" },
       parserOptions: {
         project: ["./tsconfig.json"], // Specify it only for TypeScript files
