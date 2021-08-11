@@ -25,7 +25,7 @@ export const HomeLayout: VFC<Props> = (props) => {
             {props.children}
             <div className="h-[94%] relative">
               <IconButton className="absolute bottom-0 right-3 p-2 w-10 h-10 bg-blue-700">
-                <PlusIcon className="bg-gray-800" />
+                <PlusIcon className="bg-white" />
               </IconButton>
             </div>
           </div>

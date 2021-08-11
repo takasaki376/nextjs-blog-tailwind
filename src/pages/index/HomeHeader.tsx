@@ -1,5 +1,6 @@
 import { SearchIcon } from "@heroicons/react/outline";
 import type { VFC } from "react";
+import { Auth } from "src/components/parts/Auth";
 import { InputText } from "src/components/shared/InputText";
 
 export const HomeHeader: VFC = () => {
@@ -14,6 +15,7 @@ export const HomeHeader: VFC = () => {
           startIcon={<SearchIcon className="mr-2 my-auto w-6 h-6" />}
         />
       </div>
+      <Auth />
     </div>
   );
 };
