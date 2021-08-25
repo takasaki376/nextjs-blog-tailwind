@@ -8,7 +8,7 @@ export const Auth: VFC = () => {
 
   const handleLogout = useCallback(() => {
     return AuthUser.signOut();
-  }, []);
+  }, [AuthUser]);
 
   return (
     <div className="flex items-center justify-center h-full">
