@@ -159,3 +159,14 @@ npx mrm@2 lint-staged
 
 # マークダウンの表示用のライブラリ
 
+# auth0
+```
+yarn add @auth0/nextjs-auth0
+```
+
+# firebase
+```
+yarn add firebase
+yarn add firebase-admin
+yarn add next-firebase-auth
+```
