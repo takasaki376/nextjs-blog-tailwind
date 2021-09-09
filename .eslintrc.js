@@ -1,9 +1,7 @@
 module.exports = {
   root: true,
   env: {
-    browser: true,
     es2021: true,
-    node: true,
   },
   settings: {
     "import/resolver": {
@@ -14,26 +12,17 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "next",
     "next/core-web-vitals",
     "prettier",
   ],
-  parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: 2021,
-    sourceType: "module",
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaVersion: 2020,
     project: ["tsconfig.json"],
-  },
-  settings: { react: { version: "detect" } },
-  plugins: ["@typescript-eslint", "simple-import-sort", "tailwindcss"],
+  }, 
+  plugins: ["simple-import-sort", "tailwindcss"],
   rules: {
-    "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off",
     "no-restricted-imports": [
       "error",
       { paths: [{ name: "react", importNames: ["default"] }] },
@@ -70,7 +59,6 @@ module.exports = {
     "prefer-const": "error",
     "func-style": ["error", "expression"],
     "prefer-template": "error",
-    "react/display-name": "error",
     "react/jsx-handler-names": [
       "error",
       {
@@ -81,20 +69,19 @@ module.exports = {
       },
     ],
     "react/destructuring-assignment": ["error", "never"],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     "react/jsx-pascal-case":["error" , {allowNamespace : true}],
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
     "import/newline-after-import": "error",
     "import/no-default-export": "error",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "sort-imports": ["error", { ignoreDeclarationSort: true }],
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
+    // "@typescript-eslint/no-explicit-any": "off",
+    // "@typescript-eslint/no-var-requires": "off",
+    // "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/consistent-type-imports": ["warn",{ prefer: "type-imports" },],
-    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "@typescript-eslint/no-unused-vars": ["error", { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }],
     "@typescript-eslint/naming-convention": [
       "error",
       // { selector: "variable",modifiers: "const",format: ["PascalCase", "camelCase"] },
@@ -116,14 +103,14 @@ module.exports = {
         aspects: ["invalidHref", "preferButton"],
       },
     ],
-    "jsx-a11y/alt-text": "OFF",
+    // "jsx-a11y/alt-text": "OFF",
     // "tailwindcss/classnames-order": "warn",
     // "tailwindcss/no-custom-classname": "warn",
     "tailwindcss/no-contradicting-classname": "error",
   },
   overrides: [
     {
-      files: ["src/pages/**/*.tsx", "src/pages/**/**/*.tsx","src/pages/**/**/*.ts"],
+      files: ["src/pages/**/*.page.tsx", "src/pages/**/**/*.page.tsx","src/pages/**/**/*.page.ts"],
       rules: { "import/no-default-export": "off" },
       parserOptions: {
         project: ["./tsconfig.json"], // Specify it only for TypeScript files
