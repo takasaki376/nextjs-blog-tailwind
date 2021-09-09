@@ -6,6 +6,7 @@ import { initAuth } from "src/context/user/initAuth";
 
 initAuth();
 
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 const MyApp = (props: AppProps) => {
   return (
     // <UserProvider>
@@ -13,4 +14,5 @@ const MyApp = (props: AppProps) => {
     // </UserProvider>
   );
 };
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 export default MyApp;
