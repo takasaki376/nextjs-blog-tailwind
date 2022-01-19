@@ -1,17 +1,6 @@
 module.exports = {
   root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
-  settings: {
-    "import/resolver": {
-      node: {
-        paths: ["."],
-      },
-    },
-  },
+  env: { browser: true, es2021: true, node: true, },
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -29,8 +18,15 @@ module.exports = {
     },
     project: ["tsconfig.json"],
   },
-  settings: { react: { version: "detect" } },
   plugins: ["@typescript-eslint", "simple-import-sort", "tailwindcss"],
+  settings: { 
+    react: { version: "detect" } , 
+    "import/resolver": {
+      node: {
+        paths: ["."],
+      },
+    },
+  },
   rules: {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
